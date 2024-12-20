@@ -14,8 +14,8 @@ evaluate.py: TEST MODEL IRIS DATASET
 '''
 
 test_df = pd.read_csv('data/prepare/test.csv')
-X_test = Variable(torch.Tensor(np.array(test_df.iloc[:, :-1])).float())
-y_test = test_df.iloc[:, -1]
+test_x = Variable(torch.Tensor(np.array(test_df.iloc[:, :-1])).float())
+test_y = Variable(torch.Tensor(np.array(test_df.iloc[:, -1])).long())
 
 # Load trained
 net = None
@@ -23,14 +23,17 @@ with open('models/model.pth', 'rb') as model_file:
     net = torch.load(model_file)
     
 # accuracy
-predictions = net(X_test)
+predictions = net(test_x)
 _, predicted = torch.max(predictions, 1)
 
 # metrics
-accuracy = (predicted == y_test).sum().item() / len(y_test)
+accuracy = (predicted == test_y).sum().item() / len(test_y)
+metrics = {
+    'test_accuracy': accuracy
+}
 #save
 with open('metrics/test_metrics.json', 'w') as accuracy_file:
-    json.dump(accuracy, accuracy_file)
+    json.dump(metrics, accuracy_file)
     
 # roc as plot png
 from sklearn.metrics import roc_curve, auc
@@ -40,7 +43,7 @@ fpr = dict()
 tpr = dict()
 roc_auc = dict()
 for i in range(3):
-    fpr[i], tpr[i], _ = roc_curve(y_test, predictions.detach().numpy()[:, i], pos_label=i)
+    fpr[i], tpr[i], _ = roc_curve(test_y, predictions.detach().numpy()[:, i], pos_label=i)
     roc_auc[i] = auc(fpr[i], tpr[i])
     
 plt.figure()

@@ -29,7 +29,7 @@ stages:
     - data/prepare/test.csv
     - models/model.pth
     - src/evaluate.py
-    outs:
+    metrics:
     - metrics/test_metrics.json:
         cache: false
     plots:
