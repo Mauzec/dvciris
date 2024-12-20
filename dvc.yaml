@@ -2,9 +2,25 @@ stages:
   prepare:
     cmd: python prepare.py
     deps:
-      - src/prepare.py
-      - data/raw/iris.csv
+    - src/prepare.py
+    - data/raw/iris.csv
     outs:
-      - data/prepare/test.csv
-      - data/prepare/train.csv
-    
+    - data/prepare/test.csv
+    - data/prepare/train.csv
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/prepare/train.csv
+    - src/train.py
+    params:
+    - train.fc2_fc3_n
+    - train.epoch
+    - train.lr
+    outs:
+    - models/model.pth
+    metrics:
+    - metrics/train_metrics.json:
+        cache: false
+    plots:
+    - plots/confusion_matrix.png
+    - plots/feature_importance.png
