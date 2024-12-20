@@ -1,5 +1,10 @@
 stages:
   prepare:
-    cmd: src/prepare.py -o data/prepare/test.csv data/prepare/train.csv
+    cmd: python prepare.py
     deps:
-    - data/raw/iris.csv
+      - src/prepare.py
+      - data/raw/iris.csv
+    outs:
+      - data/prepare/test.csv
+      - data/prepare/train.csv
+    
