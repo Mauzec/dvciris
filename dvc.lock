@@ -35,20 +35,20 @@ stages:
     outs:
     - path: metrics/train_metrics.json
       hash: md5
-      md5: 43d02fe2277817c1263b992289ece2a9
+      md5: 1fbd7b5400e3ab5c0c26109053b7377a
       size: 32
     - path: models/model.pth
       hash: md5
-      md5: 6f53fadb894a72d67540c13455165a59
+      md5: db906f5fc521a1442638c4de9a86a8a1
       size: 88820
     - path: plots/confusion_matrix.png
       hash: md5
-      md5: 7d74a3f21b5a4a043246244144f487e3
-      size: 14528
+      md5: c1a3048658a04c70b3379ee572106803
+      size: 14764
     - path: plots/feature_importance.png
       hash: md5
-      md5: 2cee8460ab328200ea4d2ade9615d138
-      size: 14123
+      md5: fff86e1bac4f8fa0cc08b811ca9aa159
+      size: 14892
   evaluate:
     cmd: python src/evaluate.py
     deps:
