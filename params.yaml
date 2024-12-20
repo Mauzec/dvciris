@@ -1,4 +1,4 @@
 train:
-  fc2_fc3_n: 200
-  epoch: 1500
+  fc2_fc3_n: 300
+  epoch: 1000
   lr: 0.0009
