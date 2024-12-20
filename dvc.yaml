@@ -1,9 +1,8 @@
 stages:
   prepare:
-    cmd: python prepare.py
+    cmd: python src/prepare.py
     deps:
     - src/prepare.py
-    - data/raw/iris.csv
     outs:
     - data/prepare/test.csv
     - data/prepare/train.csv
@@ -24,3 +23,14 @@ stages:
     plots:
     - plots/confusion_matrix.png
     - plots/feature_importance.png
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - data/prepare/test.csv
+    - models/model.pth
+    - src/evaluate.py
+    outs:
+    - metrics/evaluate_metrics.json:
+        cache: false
+    plots:
+    - plots/roc.png

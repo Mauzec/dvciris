@@ -1,0 +1,51 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: src/prepare.py
+      hash: md5
+      md5: 1c9ff1aca1597efc9beceb5ce9ff4cab
+      size: 464
+    outs:
+    - path: data/prepare/test.csv
+      hash: md5
+      md5: 32ecd1b41ec3a322ebd7d1cea0ab14c9
+      size: 617
+    - path: data/prepare/train.csv
+      hash: md5
+      md5: 20a771675f974006d30c2926ff658bea
+      size: 2237
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/prepare/train.csv
+      hash: md5
+      md5: 20a771675f974006d30c2926ff658bea
+      size: 2237
+    - path: src/train.py
+      hash: md5
+      md5: b6eeb72560f349e7f4fed31f970c8f0d
+      size: 2755
+    params:
+      params.yaml:
+        train.epoch: 1000
+        train.fc2_fc3_n: 100
+        train.lr: 0.001
+    outs:
+    - path: metrics/train_metrics.json
+      hash: md5
+      md5: 43d02fe2277817c1263b992289ece2a9
+      size: 32
+    - path: models/model.pth
+      hash: md5
+      md5: 36e1f27b8e22e225140764bad72913e6
+      size: 47220
+    - path: plots/confusion_matrix.png
+      hash: md5
+      md5: 7d74a3f21b5a4a043246244144f487e3
+      size: 14528
+    - path: plots/feature_importance.png
+      hash: md5
+      md5: 7591f2161a99338e771fbb23b467d10d
+      size: 14866

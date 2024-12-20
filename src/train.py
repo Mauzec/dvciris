@@ -53,7 +53,7 @@ train_df = pd.read_csv('data/prepare/train.csv')
 train_X = Variable(torch.Tensor(np.array(train_df.iloc[:, :-1])).float())
 train_y = Variable(torch.Tensor(np.array(train_df.iloc[:, -1])).long())
 
-net = Net()
+net = Net(fc2_fc3_n)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(net.parameters(), lr=lr)
 

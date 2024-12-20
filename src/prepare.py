@@ -5,9 +5,8 @@ import pandas as pd
 iris = load_iris()
 df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
 df['target'] = iris.target
-# transform species to numerical
-df['target'] = df['target'].map({0: 'setosa', 1: 'versicolor', 2: 'virginica'})
-df.to_csv('data/raw/iris.csv', index=False)
+#save raw iris
+df.to_csv('./data/raw/iris.csv', index=False)
 
 train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
 train_df.to_csv('data/prepare/train.csv', index=False)
