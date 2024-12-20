@@ -7,6 +7,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import tqdm
 import json
+from train import Net
 
 '''
 evaluate.py: TEST MODEL IRIS DATASET

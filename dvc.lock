@@ -39,7 +39,7 @@ stages:
       size: 32
     - path: models/model.pth
       hash: md5
-      md5: 36e1f27b8e22e225140764bad72913e6
+      md5: 235a2b589f22813ac6f66d15c7515c1c
       size: 47220
     - path: plots/confusion_matrix.png
       hash: md5
@@ -47,5 +47,29 @@ stages:
       size: 14528
     - path: plots/feature_importance.png
       hash: md5
-      md5: 7591f2161a99338e771fbb23b467d10d
-      size: 14866
+      md5: 75067a6a30711cf1b3adf6c50233cf97
+      size: 14831
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/prepare/test.csv
+      hash: md5
+      md5: 32ecd1b41ec3a322ebd7d1cea0ab14c9
+      size: 617
+    - path: models/model.pth
+      hash: md5
+      md5: 235a2b589f22813ac6f66d15c7515c1c
+      size: 47220
+    - path: src/evaluate.py
+      hash: md5
+      md5: 44dda65926b63ef795985194cec615c2
+      size: 1489
+    outs:
+    - path: metrics/test_metrics.json
+      hash: md5
+      md5: 30565a8911a6bb487e3745c0ea3c8224
+      size: 3
+    - path: plots/roc.png
+      hash: md5
+      md5: c874c7518de8189a88c4ed8cf8febfa8
+      size: 32966

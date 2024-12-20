@@ -30,7 +30,7 @@ stages:
     - models/model.pth
     - src/evaluate.py
     outs:
-    - metrics/evaluate_metrics.json:
+    - metrics/test_metrics.json:
         cache: false
     plots:
     - plots/roc.png
