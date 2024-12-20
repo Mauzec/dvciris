@@ -1,0 +1,4 @@
+train:
+  fc2_fc3_n: 100
+  epoch: 1000
+  lr: 0.001
