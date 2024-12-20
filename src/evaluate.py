@@ -28,6 +28,9 @@ _, predicted = torch.max(predictions, 1)
 
 # metrics
 accuracy = (predicted == y_test).sum().item() / len(y_test)
+metrics = {
+    'test_accuracy': accuracy
+}
 #save
 with open('metrics/test_metrics.json', 'w') as accuracy_file:
     json.dump(accuracy, accuracy_file)

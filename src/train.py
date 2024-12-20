@@ -73,7 +73,7 @@ torch.save(net, 'models/model.pth')
 
 # Calculate metrics and save them
 accuracy = (train_y == predicted).sum().item() / len(train_y)
-metrics = {'accuracy': accuracy}
+metrics = {'train_accuracy': accuracy}
 with open('metrics/train_metrics.json', 'w') as metrics_file:
     json.dump(metrics, metrics_file)
     
