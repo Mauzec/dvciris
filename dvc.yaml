@@ -1,0 +1,5 @@
+stages:
+  prepare:
+    cmd: src/prepare.py -o data/prepare/test.csv data/prepare/train.csv
+    deps:
+    - data/raw/iris.csv
